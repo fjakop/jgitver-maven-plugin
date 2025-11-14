@@ -23,7 +23,7 @@ actions << 'rm -rf .git'.execute(null, baseDir).text
 
 def logLines = new File("$basedir", "build.log").readLines()
 foundLines = logLines.findAll { it =~ /Properties exported to/ }
-assert 1 == foundLines.size
+assert 1 == foundLines.size()
 
 File exportedPropsFile = new File(basedir, exportedPropsFileStr)
 assert exportedPropsFile.isFile()
@@ -33,7 +33,7 @@ exportedPropsFile.withInputStream {
     properties.load(it)
 }
 
-// The should be a decent amount of properties 
+// The should be a decent amount of properties
 assert properties.size() >= 10
 
 
