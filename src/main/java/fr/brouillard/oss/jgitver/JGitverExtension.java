@@ -16,6 +16,7 @@
 package fr.brouillard.oss.jgitver;
 
 import fr.brouillard.oss.jgitver.cfg.Configuration;
+import fr.brouillard.oss.jgitver.impl.GitConventionalCommitsVersionCalculatorImpl;
 import fr.brouillard.oss.jgitver.metadata.Metadatas;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -60,7 +61,9 @@ public class JGitverExtension extends AbstractMavenLifecycleParticipant {
       Configuration cfg = configurationProvider.getConfiguration();
 
       try (GitVersionCalculator gitVersionCalculator =
-          GitVersionCalculator.location(rootDirectory)) {
+          new GitConventionalCommitsVersionCalculatorImpl(rootDirectory)) {
+        //      try (GitVersionCalculator gitVersionCalculator =
+        //                     GitVersionCalculator.location(rootDirectory)) {
         if (cfg.strategy != null) {
           gitVersionCalculator.setStrategy(cfg.strategy);
         } else {
