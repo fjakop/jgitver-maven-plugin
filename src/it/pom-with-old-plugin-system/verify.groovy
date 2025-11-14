@@ -21,7 +21,7 @@ actions.write 'Actions started at: ' + new Date() + '\n'
 actions << 'rm -rf .git'.execute(null, baseDir).text
 
 // Check the version was used by the plugin execution
-def foundLines = new File("$basedir", "build.log").readLines().findAll { it =~ /read https:\/\/github.com\/jgitver\/jgitver-maven-plugin for further information/ } 
-assert 1 == foundLines.size
+def foundLines = new File("$basedir", "build.log").readLines().findAll { it =~ /read https:\/\/github.com\/jgitver\/jgitver-maven-plugin for further information/ }
+assert 1 == foundLines.size()
 
 return true

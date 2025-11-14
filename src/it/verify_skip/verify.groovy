@@ -23,10 +23,10 @@ actions << 'rm -rf .git'.execute(null, baseDir).text
 // Check the version was used by the plugin execution
 def logLines = new File("$basedir", "build.log").readLines()
 def foundLines = logLines.findAll { it =~ /fr.brouillard.oss.it::skip-is-working::2.0 ->/ }
-assert 0 == foundLines.size
+assert 0 == foundLines.size()
 
 foundLines = logLines.findAll { it =~ /jgitver execution has been skipped by request of the user/ }
-assert 1 == foundLines.size
+assert 1 == foundLines.size()
 
 // And check that the produced artifact was installed with the good version
 File installedPomFile = new File("$basedir" + "/../../local-repo/fr/brouillard/oss/it/skip-is-working/2.0/", "skip-is-working-2.0.pom")
